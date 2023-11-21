@@ -6,8 +6,12 @@ const { body, validationResult } = require("express-validator");
 
 //ROUTE 1 Get all the notes
 router.get("/fetchnotes", fetchuser, async (req, res) => {
-  const notes = await Notes.find({ user: req.user.id });
-  res.json(notes);
+  try {
+    const notes = await Notes.find({ user: req.user.id });
+    res.json(notes);
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 
 //ROUTE 2 Create a new note
@@ -29,6 +33,7 @@ router.post(
       if (!error.isEmpty()) {
         return res.status(400).json({ errors: error.array() });
       }
+      console.log("console msg "+req.user.id)
       const note = new Notes({
         title,
         description,
