@@ -35,10 +35,12 @@ const Signup = (props) => {
       localStorage.setItem("token", json.authToken);
       console.log("test")
       navigate("/");
-      props.showAlert("Successfully Signed up", "Success");
+      props.showAlert("Successfully Signed up", "success");
     } else {
-      props.showAlert("Incorrect details provided", "Danger");
+      props.showAlert("Incorrect details provided", "danger");
     }
+      
+
   };
 
   const btnstyle = {
@@ -62,9 +64,9 @@ const Signup = (props) => {
             <div className="card-body p-5" width="fit-content">
               <h5 className="card-title text-center fs-3">Sign in</h5>
               <form onSubmit={handleSubmit}>
-                <div className="">
+                <div className="my-3">
                   <label htmlFor="name" className="form-label">
-                    Name
+                    Enter your Full Name
                   </label>
                   <input
                     type="text"
@@ -78,7 +80,7 @@ const Signup = (props) => {
                 </div>
                 <div className="my-3">
                   <label htmlFor="email" className="form-label">
-                    Email address
+                    Enter your Email address
                   </label>
                   <input
                     type="email"
@@ -94,7 +96,7 @@ const Signup = (props) => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">
-                    Password
+                    Set a Password
                   </label>
                   <input
                     type="password"
@@ -106,7 +108,7 @@ const Signup = (props) => {
                     required
                   />
                 </div>
-                <div className="mb-3">
+                {/* <div className="mb-3">
                   <label htmlFor="cpassword" className="form-label">
                     Confirm Password
                   </label>
@@ -119,10 +121,10 @@ const Signup = (props) => {
                     minLength={6}
                     required
                   />
-                </div>
+                </div> */}
                 <button
                   type="submit"
-                  className="btn btn-primary mb-2"
+                  className="btn btn-primary mb-4"
                   style={btnstyle}
                 >
                   {" "}

@@ -174,7 +174,7 @@ const Notes = (props) => {
         <div className="row mt-5">
           <h2 style={{ color: "#9F6247" }}>My Notes</h2>
           <div className="container">
-            {notes.length === 0 && "Write your first note to dosplay here!!"}
+            {notes.length === 0 && "Write your first note to display here!!"}
           </div>
           {notes.map((note) => {
             return (
