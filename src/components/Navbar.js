@@ -9,13 +9,31 @@ const handleLogout = ()=>{
   localStorage.removeItem('token');
   navigate('/login');
 }
+
+  const btnstyle = {
+    backgroundColor: "#9F6247",
+    borderColor: "#9F6247",
+  };
+
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar border p-3 m-3 navbar-expand-lg navbar-light bg-light d-flex bd-highlight" style={{borderRadius:"15px"}}>
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            Stories
-          </Link>
+       
+            <div class="p-2 flex-fill bd-highlight">
+              <Link
+                className="navbar-brand"
+                to="/"
+                style={{
+                  color: "#9F6247",
+                  fontWeight: "Bold",
+                  textTransform: "uppercase",
+                }}
+              >
+                Stories
+              </Link>
+           
+          </div>
           <button
             className="navbar-toggler"
             type="button"
@@ -29,7 +47,7 @@ const handleLogout = ()=>{
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+              <li className="nav-item mx-3">
                 <Link
                   className={`nav-link ${
                     location.pathname === "/" ? "active" : ""
@@ -40,7 +58,7 @@ const handleLogout = ()=>{
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item mx-3">
                 <Link
                   className={`nav-link ${
                     location.pathname === "/about" ? "active" : ""
@@ -51,15 +69,37 @@ const handleLogout = ()=>{
                 </Link>
               </li>
             </ul>
-            {!localStorage.getItem('token')?<div>
-            <Link type="button" className="btn mx-2 btn-outline-primary" to="/login">
-              Login
-            </Link>
-            <Link type="button" className="btn mx-2 btn-primary" to="/signup">
-              Signup
-            </Link></div>:<button onClick={handleLogout} className="btn btn-primary">
-              Logout
-            </button>}
+            {!localStorage.getItem("token") ? (
+              <div>
+                <Link
+                  type="button"
+                  className="btn mx-2 "
+                  to="/login"
+                  style={{ color: "#9F6247", borderColor: "#9F6247" }}
+                >
+                  {" "}
+                  Login
+                </Link>
+                <Link
+                  type="button"
+                  className="btn mx-2 btn-primary"
+                  to="/signup"
+                  style={btnstyle}
+                >
+                  {" "}
+                  Signup
+                </Link>
+              </div>
+            ) : (
+              <button
+                onClick={handleLogout}
+                className="btn btn-primary"
+                style={btnstyle}
+              >
+                {" "}
+                Logout
+              </button>
+            )}
           </div>
         </div>
       </nav>

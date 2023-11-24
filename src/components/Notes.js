@@ -10,7 +10,7 @@ const Notes = (props) => {
   const { notes, getNotes, editNote } = context;
   const [note, setNote] = useState({ etitle: "", edescription: "", etag: "" });
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem("token")) {
       getNotes();
     } else {
       navigate("/login");
@@ -41,8 +41,24 @@ const Notes = (props) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
 
+  const btnstyle = {
+    backgroundColor: "#9F6247",
+    borderColor: "#9F6247",
+  };
+
   return (
     <>
+      {/* <h1
+        style={{
+          fontSize: "5vw",
+          textTransform: "uppercase",
+          color: "#9F6247",
+          textAlign: "center",
+          fontFamily: "Impact",
+        }}
+      >
+        Welcome to Stories!!
+      </h1> */}
       <AddNote showAlert={props.showAlert} />
       <div className="container">
         <button
@@ -138,7 +154,7 @@ const Notes = (props) => {
                   className="btn btn-secondary"
                   data-bs-dismiss="modal"
                 >
-                  Close
+                  Cnacel
                 </button>
                 <button
                   type="button"
@@ -147,6 +163,7 @@ const Notes = (props) => {
                   }
                   onClick={handleClick}
                   className="btn btn-primary"
+                  style={btnstyle}
                 >
                   Update Note
                 </button>
@@ -154,10 +171,10 @@ const Notes = (props) => {
             </div>
           </div>
         </div>
-        <div className="row my-3">
-          <h2>Your Notes</h2>
+        <div className="row mt-5">
+          <h2 style={{ color: "#9F6247" }}>My Notes</h2>
           <div className="container">
-            {notes.length === 0 && "No Notes to display"}
+            {notes.length === 0 && "Write your first note to dosplay here!!"}
           </div>
           {notes.map((note) => {
             return (
