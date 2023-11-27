@@ -14,7 +14,7 @@ const Signup = (props) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const host = "http://localhost:5000";
+  const host = "https://stories-app-uf8u.onrender.com";
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch(`${host}/api/auth/createuser`, {
