@@ -154,7 +154,7 @@ const Notes = (props) => {
                   className="btn btn-secondary"
                   data-bs-dismiss="modal"
                 >
-                  Cnacel
+                  Cancel
                 </button>
                 <button
                   type="button"
