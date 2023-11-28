@@ -4,7 +4,26 @@ const Notes = require("../models/Note");
 const fetchuser = require("../middleware/fetchUser");
 const { body, validationResult } = require("express-validator");
 
-//ROUTE 1 Get all the notes
+//Route 1 Get a note by id
+router.get("/getnote/:id", fetchuser,  async (req, res) => {
+  try {
+      let note = await Notes.findById(req.params.id);
+      if (!note) {
+        return res.status(404).send("Not Found!");
+      }
+      const userNote = note.user.toString();
+      if (userNote !== req.user.id) {
+        return res.status(401).send("Not Allowed");
+      }
+
+      note = await Notes.findOne({_id:req.params.id});
+      res.json({ note });
+  } catch (error) {
+    console.error(error.message);
+  }
+})
+
+//ROUTE 2 Get all the notes
 router.get("/fetchnotes", fetchuser, async (req, res) => {
   try {
     const notes = await Notes.find({ user: req.user.id });
@@ -14,7 +33,7 @@ router.get("/fetchnotes", fetchuser, async (req, res) => {
   }
 });
 
-//ROUTE 2 Create a new note
+//ROUTE 3 Create a new note
 router.post(
   "/addnote",
   fetchuser,
@@ -49,7 +68,7 @@ router.post(
   }
 );
 
-//ROUTE 3 Update the existing note
+//ROUTE 4 Update the existing note
 router.put("/updatenote/:id", fetchuser, async (req, res) => {
   const { title, description, tag } = req.body;
   try {
@@ -86,7 +105,7 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
   }
 });
 
-//ROUTE 4 Delete the existing note
+//ROUTE 5 Delete the existing note
 router.delete("/deletenote/:id", fetchuser, async (req, res) => {
   try {
     //find the note to be deleted and delete it
