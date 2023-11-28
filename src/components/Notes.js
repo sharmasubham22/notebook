@@ -7,11 +7,12 @@ import { useNavigate } from "react-router-dom";
 const Notes = (props) => {
   let navigate = useNavigate();
   const context = useContext(noteContext);
-  const { notes, getNotes, editNote } = context;
+  const { notes, getNoteById, getNotes, editNote } = context;
   const [note, setNote] = useState({ etitle: "", edescription: "", etag: "" });
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getNotes();
+      getNoteById();
     } else {
       navigate("/login");
     }
@@ -48,18 +49,8 @@ const Notes = (props) => {
 
   return (
     <>
-      {/* <h1
-        style={{
-          fontSize: "5vw",
-          textTransform: "uppercase",
-          color: "#9F6247",
-          textAlign: "center",
-          fontFamily: "Impact",
-        }}
-      >
-        Welcome to Stories!!
-      </h1> */}
       <AddNote showAlert={props.showAlert} />
+      <div className="or-divider">Stories</div>
       <div className="container">
         <button
           type="button"
@@ -171,8 +162,10 @@ const Notes = (props) => {
             </div>
           </div>
         </div>
-        <div className="row mt-5">
-          <h2 style={{ color: "#9F6247" }}>My Notes</h2>
+        <div className="row my-5">
+          <h2 style={{ color: "#9F6247" }}>
+            My Notes! <i className="fa-regular fa-clipboard"></i>
+          </h2>
           <div className="container">
             {notes.length === 0 && "Write your first note to display here!!"}
           </div>
@@ -181,6 +174,7 @@ const Notes = (props) => {
               <NoteItem
                 key={note._id}
                 updateNote={updateNote}
+                getNote = {getNoteById}
                 note={note}
                 showAlert={props.showAlert}
               />

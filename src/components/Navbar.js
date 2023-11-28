@@ -17,12 +17,12 @@ const handleLogout = ()=>{
 
   return (
     <div>
-      <nav className="navbar border p-3 m-3 navbar-expand-lg navbar-light bg-light d-flex bd-highlight" style={{borderRadius:"15px"}}>
+      <nav className="navbar border p-3 m-3 navbar-expand-lg navbar-light d-flex bd-highlight" style={{borderRadius:"5px"}}>
         <div className="container-fluid">
        
-            <div class="p-2 flex-fill bd-highlight">
+            <div className="p-1 flex-fill bd-highlight">
               <Link
-                className="navbar-brand"
+                className="navbar-brand fs-3"
                 to="/"
                 style={{
                   color: "#9F6247",
@@ -46,7 +46,7 @@ const handleLogout = ()=>{
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 fs-5">
               <li className="nav-item mx-3">
                 <Link
                   className={`nav-link ${
@@ -73,7 +73,7 @@ const handleLogout = ()=>{
               <div>
                 <Link
                   type="button"
-                  className="btn mx-2 "
+                  className="btn mx-2 fs-5"
                   to="/login"
                   style={{ color: "#9F6247", borderColor: "#9F6247" }}
                 >
@@ -82,7 +82,7 @@ const handleLogout = ()=>{
                 </Link>
                 <Link
                   type="button"
-                  className="btn mx-2 btn-primary"
+                  className="btn mx-2 btn-primary fs-5"
                   to="/signup"
                   style={btnstyle}
                 >
@@ -93,7 +93,7 @@ const handleLogout = ()=>{
             ) : (
               <button
                 onClick={handleLogout}
-                className="btn btn-primary"
+                className="btn btn-primary fs-5"
                 style={btnstyle}
               >
                 {" "}

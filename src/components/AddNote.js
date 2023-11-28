@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import noteContext from "../context/notes/NoteContext";
-import typImg from './element1.png'
+import notes from './images/notes-flatline.svg'
 
 const AddNote = (props) => {
   const context = useContext(noteContext);
@@ -24,18 +24,24 @@ const AddNote = (props) => {
     };
   return (
     <div>
-      <div className="container my-3">
-        <div className="row border shadow" style={{ borderRadius: "15px" }}>
-          <div className="col-md-6 d-flex justify-content-center align-items-center">
+      <div className="container mb-3">
+        <div className="row">
+          <div className="col-md-6 p-5">
+            <h1 className="text-center">
+              <b>Write your Stories</b>
+            </h1>
+            <h4 className="text-center text-muted">Your own way..</h4>
             <img
-              width={600}
-              src={typImg}
+              style={{ width: "450px", margin: "auto" }}
+              src={notes}
               alt="element1"
-              className="img-fluid rounded-start"
+              className="img-fluid"
             />
           </div>
-          <div className="col-md-6 p-5">
-            <h1 className="text-center mb-3">Add a New Note</h1>
+          <div className="col-md-6 p-5 border">
+            <h2 className="mb-3">
+              Create a New Note <i class="fa-solid fa-file-circle-plus"></i>
+            </h2>
             <form>
               <div className="mb-3">
                 <label htmlFor="title" className="form-label">
@@ -86,13 +92,14 @@ const AddNote = (props) => {
                   <option value="Personal">Personal</option>
                   <option value="Work">Work</option>
                   <option value="Home">Home</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
               <button
                 type="submit"
                 disabled={note.title.length < 5 || note.description.length < 5}
                 onClick={handleClick}
-                className="btn btn-primary"
+                className="btn btn-primary login-btn"
                 style={btnstyle}
               >
                 Add Note
