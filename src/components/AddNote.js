@@ -38,7 +38,7 @@ const AddNote = (props) => {
               className="img-fluid"
             />
           </div>
-          <div className="col-md-6 p-5 border">
+          <div className="col-md-6 p-5 border" style={{ borderRadius: "5px" }}>
             <h2 className="mb-3">
               Create a New Note <i class="fa-solid fa-file-circle-plus"></i>
             </h2>

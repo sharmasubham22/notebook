@@ -1,12 +1,11 @@
 import React, { useContext } from 'react'
 import noteContext from '../context/notes/NoteContext';
-import { Link, useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const NoteItem = (props) => {
 const {note, updateNote} = props;
 const context = useContext(noteContext);
 const { deleteNote } = context;
-let navigate = useNavigate();
 
 const capitalize = (word) => {
   if (word === "danger") {
