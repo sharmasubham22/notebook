@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { logo } from "./images/assets";
 
 export default function Navbar() {
 let location = useLocation();
@@ -11,31 +12,38 @@ const handleLogout = ()=>{
 }
 
   const btnstyle = {
-    backgroundColor: "#9F6247",
-    borderColor: "#9F6247",
+    backgroundColor: "#F6A89E",
+    color: '#33322E',
+    border: "3px solid #33322E",
   };
 
   return (
-    <div>
-      <nav className="navbar border p-3 m-3 navbar-expand-lg navbar-light d-flex bd-highlight" style={{borderRadius:"5px"}}>
+    <div className="container">
+      <nav
+        className="navbar p-3 mt-3 navbar-expand-lg navbar-light d-flex bd-highlight"
+        style={{
+          background: "#F4D799",
+          borderRadius: "10px",
+          border: "3px solid  #33322E",
+          // boxShadow: ".5rem .5rem 0  #212121",
+        }}
+      >
         <div className="container-fluid">
-       
-            <div className="p-1 flex-fill bd-highlight">
-              <Link
-                className="navbar-brand fs-3"
-                to="/"
-                style={{
-                  color: "#9F6247",
-                  fontWeight: "Bold",
-                  textTransform: "uppercase",
-                }}
-              >
-                Stories
-              </Link>
-           
+          <div className="p-1 flex-fill bd-highlight">
+            <Link
+              className="navbar-brand fs-3"
+              to="/"
+              style={{
+                color: "#33322E",
+                fontWeight: "Bold",
+                textTransform: "uppercase",
+              }}
+            >
+              {logo}
+            </Link>
           </div>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler border-0 fs-2"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -43,7 +51,7 @@ const handleLogout = ()=>{
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <i className="fa-solid fa-bars" style={{ color: "#33322E" }}></i>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 fs-5">
@@ -54,6 +62,7 @@ const handleLogout = ()=>{
                   }`}
                   aria-current="page"
                   to="/"
+                  style={{ fontWeight: "700" }}
                 >
                   Home
                 </Link>
@@ -64,6 +73,7 @@ const handleLogout = ()=>{
                     location.pathname === "/about" ? "active" : ""
                   }`}
                   to="/about"
+                  style={{ fontWeight: "700" }}
                 >
                   About
                 </Link>
@@ -75,7 +85,7 @@ const handleLogout = ()=>{
                   type="button"
                   className="btn mx-2 fs-5"
                   to="/login"
-                  style={{ color: "#9F6247", borderColor: "#9F6247" }}
+                  style={{ color: "#33322E", border: "3px solid #33322E" }}
                 >
                   {" "}
                   Login

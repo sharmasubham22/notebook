@@ -9,6 +9,7 @@ import { useState } from "react";
 import SigninForm from "./components/SigninForm";
 import Loginform from "./components/LoginForm";
 import NotesDetails from "./components/NotesDetails";
+import Footer from "./components/Footer";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -50,6 +51,7 @@ function App() {
               />
             </Routes>
           </div>
+          <Footer/>
         </Router>
       </NoteState>
     </>

@@ -16,44 +16,58 @@ const capitalize = (word) => {
 };
   return (
     <>
-      <div className="col-md-4 col-lg-3">
-        <div className="card h-100 my-3">
-          <div className="card-body">
+      <div className="col-md-6 col-lg-4">
+        <div
+          className="card h-100 my-3"
+          style={{
+            background: "#faeed2",
+            borderRadius: "10px",
+            border: "3px solid #33322E",
+            boxShadow: ".3rem .3rem 0 #33322E",
+          }}
+        >
+          <div
+            className="card-header"
+            style={{ borderBottom: "2px solid #33322E" }}
+          >
             <div className="d-flex bd-highlight">
               <div className="flex-grow-1 bd-highlight">
-                <h5 className="card-title">{capitalize(note.title)}</h5>
+                <h4 className="card-title">{capitalize(note.title)}</h4>
               </div>
-              <div className="bd-highlight">
+              <div className="bd-highlight fs-4">
                 <i
-                  className="fa-solid fa-pen-to-square mx-2"
+                  className="fa-solid fa-pen-to-square mx-5 note-action"
                   onClick={() => updateNote(note)}
-                  style={{ color: "#9F6247" }}
                 ></i>
               </div>
-              <div className="bd-highlight">
+              <div className="bd-highlight fs-4">
                 <i
-                  className="fa-solid fa-trash-can mx-2"
+                  className="fa-solid fa-trash-can note-action"
                   onClick={() => {
                     deleteNote(note._id);
                     props.showAlert("Note deleted successfully", "success");
                   }}
-                  style={{ color: "#9F6247" }}
                 ></i>
               </div>
             </div>
+         
+          </div>
+          <div className="card-body">
             <span
-              className="badge rounded-pill my-2"
-              style={{ backgroundColor: "#9F6247" }}
+              className="badge rounded-pill my-3"
+              style={{ backgroundColor: "#9F6247", fontSize: "14px" }}
             >
               {note.tag}
             </span>
             <p className="card-text">{note.description.slice(0, 200)}...</p>
           </div>
-          <div className="card-footer">
+          <div
+            className="card-footer"
+            style={{ borderTop: "2px solid #33322E" }}
+          >
             <Link
-              className="text-muted"
               // onClick={() => {
-              //   navigate("/notedetails", 
+              //   navigate("/notedetails",
               //   {
               //     state: {
               //       title: note.title,
@@ -63,9 +77,9 @@ const capitalize = (word) => {
               //   }
               //   );
               // }}
-              to="/notedetails"
+              to="notedetails"
             >
-              Open Note &rarr;
+              Open Note <i class="fa-solid fa-arrow-right"></i>
             </Link>
           </div>
         </div>

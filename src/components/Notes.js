@@ -3,6 +3,7 @@ import noteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 import { useNavigate } from "react-router-dom";
+import { radio } from "./images/assets";
 
 const Notes = (props) => {
   let navigate = useNavigate();
@@ -43,14 +44,15 @@ const Notes = (props) => {
   };
 
   const btnstyle = {
-    backgroundColor: "#9F6247",
-    borderColor: "#9F6247",
+    backgroundColor: "#F4D799",
+    border: "2px solid #33322E",
+    color: "#33322E",
   };
 
   return (
     <>
       <AddNote showAlert={props.showAlert} />
-      <div className="or-divider">Stories</div>
+      {/* <div className="or-divider">Stories</div> */}
       <div className="container">
         <button
           type="button"
@@ -71,8 +73,18 @@ const Notes = (props) => {
           aria-hidden="true"
         >
           <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
+            <div
+              className="modal-content"
+              style={{
+                background: "#faeed2",
+                borderRadius: "10px",
+                border: "3px solid  #33322E",
+              }}
+            >
+              <div
+                className="modal-header"
+                style={{ borderBottom: "2px solid #33322E" }}
+              >
                 <h5 className="modal-title" id="exampleModalLabel">
                   Edit Note
                 </h5>
@@ -100,6 +112,7 @@ const Notes = (props) => {
                       onChange={onChange}
                       minLength={5}
                       required
+                      style={{ border: "2px solid #33322E" }}
                     />
                   </div>
                   <div className="mb-3">
@@ -116,6 +129,7 @@ const Notes = (props) => {
                       onChange={onChange}
                       minLength={5}
                       required
+                      style={{ border: "2px solid #33322E" }}
                     />
                   </div>
                   <div className="mb-3">
@@ -129,6 +143,7 @@ const Notes = (props) => {
                       value={note.etag}
                       aria-label="Default select example"
                       onChange={onChange}
+                      style={{ border: "2px solid #33322E" }}
                     >
                       <option defaultValue="No Tag">Select a Tag</option>
                       <option value="Personal">Personal</option>
@@ -138,7 +153,10 @@ const Notes = (props) => {
                   </div>
                 </form>
               </div>
-              <div className="modal-footer">
+              <div
+                className="modal-footer"
+                style={{ borderTop: "2px solid #33322E" }}
+              >
                 <button
                   type="button"
                   ref={refClose}
@@ -162,11 +180,11 @@ const Notes = (props) => {
             </div>
           </div>
         </div>
-        <div className="row my-5">
-          <h2 style={{ color: "#9F6247" }}>
-            My Notes! <i className="fa-regular fa-clipboard"></i>
-          </h2>
-          <div className="container">
+        <div className="row my-5 g-4">
+          <h1 style={{ textAlign: "center" }}>
+           {radio} My Notes {radio}
+          </h1>
+          <div>
             {notes.length === 0 && "Write your first note to display here!!"}
           </div>
           {notes.map((note) => {
@@ -174,7 +192,7 @@ const Notes = (props) => {
               <NoteItem
                 key={note._id}
                 updateNote={updateNote}
-                getNote = {getNoteById}
+                getNote={getNoteById}
                 note={note}
                 showAlert={props.showAlert}
               />
